@@ -1,29 +1,17 @@
-window.onload = () => {
-  document.querySelector("#modal").style.display = "block";
-};
-
 const closeModalBtn = document.querySelector("#closeModalBtn");
-closeModalBtn.addEventListener("click", () => {
-  if (document.querySelector("#checkbox").checked) {
-    document.querySelector("#modal").style.display = "none";
-  } else {
-    alert("Du må huke av sjekkboksen for å lukke modalen.");
-  }
-});
-// TODO: Legge til en "Ikke vis denne igjen" checkbox som lagrer en localstorage variabel som gjør
-// at modalen ikke vises igjen
+const openModalBtn = document.querySelector("#instructionBtn");
+const addBtn = document.querySelector("#addItemBtn");
+const removeBtn = document.querySelector("#removeBtn");
+const confirmRemoveBtn = document.querySelector("#confirmRemove");
+const cancelRemoveBtn = document.querySelector("#cancelRemove");
+const itemList = document.querySelector("#itemList");
+const sumOutput = document.querySelector("#sumOutput");
 
-// Add and remove function
 let items = [];
 
-const addBtn = document.querySelector("#addItemBtn");
-addBtn.addEventListener("click", () => {
+const addItem = () => {
   let itemType = document.querySelector("#itemType").value;
-  //   parseFloat to convert string to a number and float to let user input decimals
   let itemPrice = parseFloat(document.querySelector("#itemPrice").value);
-
-  // Else if to check that input values are not empty and that the price is above 0
-  // If inputvalue and price is ok the item is added to the table
   if (itemType == "") {
     alert("Du må legge til en vare og en pris.");
   } else if (itemPrice <= 0) {
@@ -34,19 +22,13 @@ addBtn.addEventListener("click", () => {
       type: itemType,
       price: itemPrice,
     };
-
     items.push(item);
     document.querySelector("#itemType").value = "";
     document.querySelector("#itemPrice").value = "";
 
     updateList();
   }
-});
-
-const removeBtn = document.querySelector("#removeBtn");
-const confirmRemoveBtn = document.querySelector("#confirmRemove");
-const cancelRemoveBtn = document.querySelector("#cancelRemove");
-let itemList = document.querySelector("#itemList");
+};
 
 const updateList = () => {
   itemList.innerHTML = "";
@@ -63,22 +45,54 @@ const updateList = () => {
     itemList.appendChild(outputTable);
   });
 
-  let sumOutput = document.querySelector("#sumOutput");
   sumOutput.innerHTML = `Total sum: ${sum}`;
 };
 
+const onConfirmRemove = (index) => {
+  items.splice(index, 1);
+  updateList();
+  document.querySelector(".confirmationModal").style.display = "none";
+};
+
+const showConfirmationModal = (index) => {
+  document.querySelector(".confirmationModal").style.display = "block";
+  confirmRemoveBtn.addEventListener("click", () => onConfirmRemove(index));
+};
+
+const hideModal = () => {
+  if (document.querySelector("#checkbox").checked) {
+    localStorage.setItem("hideModal", "true");
+    document.querySelector("#modal").style.display = "none";
+  } else {
+    localStorage.setItem("hideModal", "false");
+    document.querySelector("#modal").style.display = "none";
+  }
+};
+
+window.onload = () => {
+  if (localStorage.getItem("hideModal") !== "true") {
+    document.querySelector("#modal").style.display = "block";
+  }
+};
+
+closeModalBtn.addEventListener("click", hideModal);
+
+openModalBtn.addEventListener("click", () => {
+  document.querySelector("#modal").style.display = "block";
+});
+
+document.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    addItem();
+  }
+});
+
+addBtn.addEventListener("click", addItem);
+
 itemList.addEventListener("click", (e) => {
   if (e.target.classList.contains("removeBtn")) {
-    const index = e.target.id.substring(9); // hent ut index fra id
-    document.querySelector(".confirmationModal").style.display = "block";
-    const onConfirmRemove = () => {
-      // definer funksjonen som skal kjøres når knappen klikkes
-      items.splice(index, 1);
-      updateList();
-      document.querySelector(".confirmationModal").style.display = "none";
-      confirmRemoveBtn.removeEventListener("click", onConfirmRemove); // fjern hendelseslytteren
-    };
-    confirmRemoveBtn.addEventListener("click", onConfirmRemove);
+    const index = e.target.id.substring(9);
+    showConfirmationModal(index);
   }
 });
 
