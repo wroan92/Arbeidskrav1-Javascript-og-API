@@ -1,0 +1,128 @@
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.695);
+}
+
+.modalContainer {
+  background-color: white;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 20px;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  position: relative;
+  box-shadow: 15px 15px 5px 5px rgba(0, 0, 0, 0.4);
+}
+.modalContainer ol {
+  display: inline-block;
+  text-align: left;
+}
+/* Comfirmation Box */
+.confirmationModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.695);
+  }
+  .confirmationModalContainer {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  .comfirmRemove{
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 10px;
+  }
+  .cancelRemove{
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: bolder;
+    color: red;
+    border: none;
+    cursor: pointer;
+  }
+
+
+.button {
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #45a049;
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.4);
+}
+.removeBtn {
+  background-color: transparent;
+  font-size: 1rem;
+  font-weight: bolder;
+  color: red;
+  border: none;
+  cursor: pointer;
+}
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Table styling */
+
+table {
+  font-size: 1rem;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+th {
+  background-color: #009879;
+  color: #ffffff;
+}
+
+tr {
+  border-bottom: 0.5px solid #dddddd;
+}
+
+tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}

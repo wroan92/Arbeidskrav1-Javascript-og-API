@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Velkommen</title>
+    <link rel="stylesheet" href="./style/style.css" />
+  </head>
+  <body>
+    <div id="modal" class="modal">
+      <div class="modalContainer">
+        <h2>Hei og velkommen!</h2>
+        <h3>Her er en kjapp introduksjon til hvordan siden brukes</h3>
+        <hr>
+        <ol>
+          <li>
+            <p>Legg til varen og prisen på varen</p>
+          </li>
+          <li>
+            <p>Trykk på knappen "Legg til vare"</p>
+          </li>
+            <li>
+                <p>
+                Du vil da se varen og prisen på varen i tabellen
+                </p>
+          </li>
+          <li>
+            <p>Summen av alle varene vil stå nederst under "Sum"</p>
+          </li>
+        </ol>
+        <label for="checkbox"
+          >Jeg har lest og forstår hvordan siden brukes <br />HUSK OG HUKE AV
+          <br />&darr;</label
+        >
+        <input type="checkbox" id="checkbox" />
+        <br /><br />
+        <button class="button" id="closeModalBtn">OK</button>
+      </div>
+    </div>
+    <main>
+        <!-- Confirmation modal -->
+        <div id="confirmationContainer" class="confirmationModal">
+            <div class="confirmationModalContainer">
+              <p>Er du sikker på at du vil slette dette?</p>
+              <button id="confirmRemove" class="comfirmRemove">Ja, slett</button>
+              <button id="cancelRemove" class="cancelRemove">Avbryt</button>
+            </div>
+          </div>
+          <!--  -->
+      <div class="container">
+        <h1>Hei og velkommen!</h1>
+        <h2>Her kan du legge til varerene og prisen på varene dine</h2>
+        <h2>Etter det vil du se summen av prisen på varene som er lagt til i bunn</h2>
+        <div class="inputContainer">
+          <label for="itemType">Legg til din vare:</label>
+          <input type="text" id="itemType" placeholder="Legg til vare" />
+
+          <label for="itemPrice">Legg inn prisen på varen:</label>
+          <input type="number" id="itemPrice" placeholder="Legg til pris" />
+
+          <button class="button" id="addItemBtn">Legg til vare</button>
+        </div>
+       
+        <div class="listContainer">
+          <table>
+            <thead>
+              <tr>
+                <th>Vare</th>
+                <th>Pris</th>
+              </tr>
+            </thead>
+            <tbody id="itemList">
+              <!-- Innput from js -->
+            </tbody>
+          </table>
+          <h4 class="sumOutputContainer"><span id="sumOutput"></span></h4>
+        </div>
+      </div>
+    </main>
+    <script src="./script/index.js"></script>
+  </body>
+</html>
