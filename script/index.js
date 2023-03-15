@@ -54,50 +54,37 @@ const updateList = () => {
   items.map((item, index) => {
     sum += item.price;
     let outputTable = document.createElement("tr");
+    outputTable.id = `item${index}`;
     outputTable.innerHTML = `
       <td>${item.type}</td>
       <td>${item.price}</td>
       <td><button id="removeBtn${index}" class="removeBtn">X</button></td>
     `;
     itemList.appendChild(outputTable);
-
-    let removeItemBtn = document.querySelector(`#removeBtn${index}`);
-    /*  removeItemBtn.addEventListener("click", () => {
-      items.splice(index, 1);
-      updateList();
-    }); */
   });
 
   let sumOutput = document.querySelector("#sumOutput");
   sumOutput.innerHTML = `Total sum: ${sum}`;
 };
 
-// For å ta tak i id="removeBtn" uten og få feilmelding om at det ikke finnes
-// har jeg brukt en eventlistener på itemList som sjekker om id="removeBtn" er trykket på
-// og deretter kjører en funksjon som fjerner varen fra listen
-
-/* itemList.addEventListener("click", (e) => {
-  if (e.target.id === "removeBtn") {
-  document.querySelector(".confirmationModal").style.display = "block";
-  }
-}); */
-/*   confirmRemoveBtn.addEventListener("click", () => {
-    items.splice(i, 1);
-    updateList();
-    document.querySelector(".confirmationModal").style.display = "none";
-  }); */
-/* itemList.addEventListener("click", (e) => {
-  if (e.target.classList.contains("removeBtn")){
+itemList.addEventListener("click", (e) => {
+  if (e.target.classList.contains("removeBtn")) {
+    const index = e.target.id.substring(9); // hent ut index fra id
     document.querySelector(".confirmationModal").style.display = "block";
-    confirmRemoveBtn.addEventListener("click", () => {
-      items.splice(i, 1);
+    const onConfirmRemove = () => {
+      // definer funksjonen som skal kjøres når knappen klikkes
+      items.splice(index, 1);
       updateList();
       document.querySelector(".confirmationModal").style.display = "none";
-    });
-
-    cancelRemoveBtn.addEventListener("click", () => {
-      document.querySelector(".confirmationModal").style.display = "none";
-      alert("Ingen varer ble fjernet fra listen!");
-    });
+      confirmRemoveBtn.removeEventListener("click", onConfirmRemove); // fjern hendelseslytteren
+    };
+    confirmRemoveBtn.addEventListener("click", onConfirmRemove);
   }
-}); */
+});
+
+cancelRemoveBtn.addEventListener("click", () => {
+  document.querySelector(".confirmationModal").style.display = "none";
+  setTimeout(() => {
+    alert("Ingen varer er fjernet fra tabellen!");
+  }, 10);
+});
