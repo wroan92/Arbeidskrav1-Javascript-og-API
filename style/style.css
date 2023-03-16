@@ -29,46 +29,42 @@
 }
 /* Comfirmation Box */
 .confirmationModal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.7);
-  }
-  .confirmationModalContainer {
-    background-color: #fefefe;
-    margin: 10% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    
-  }
-  .confirmationModalContainer button{
-    margin: 10px 0;
-    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.4);
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 3px;
-    
-  }
-  .comfirmRemove{
-    background-color: #4caf50;
-    color: white;
-  }
-  .cancelRemove{
-    font-size: 1rem;
-    font-weight: bolder;
-    color: red;
-    
-  }
-
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.confirmationModalContainer {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+}
+.confirmationModalContainer button {
+  margin: 10px 0;
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.4);
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 3px;
+}
+.comfirmRemove {
+  background-color: #4caf50;
+  color: white;
+}
+.cancelRemove {
+  font-size: 1rem;
+  font-weight: bolder;
+  color: red;
+}
 
 .button {
   padding: 10px;
@@ -92,14 +88,14 @@
   cursor: pointer;
 }
 
-.instructionBtn{
+.instructionBtn {
   background-color: transparent;
   font-size: 1rem;
   font-weight: bolder;
-  border: none; 
+  border: none;
   cursor: pointer;
 }
-.instructionBtn:hover{
+.instructionBtn:hover {
   color: #0051ff;
   text-decoration: underline;
 }
@@ -137,4 +133,3 @@ th {
 tr {
   border-bottom: 0.5px solid #dddddd;
 }
-
