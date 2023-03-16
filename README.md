@@ -29,14 +29,14 @@ If the user wishes to delete an item, he can click on the delete button, the use
 
 ## How the code works
 ### Brief introduction to how the code works
-In the first part of the code, a modal is opened, if the user has unchecked the checkbox, it will set "hideModal" to "true" and the user will not get this every time the page is updated.
+In the first part of the code, a modal is opened, if the user has checked the checkbox, it will set "hideModal" to "true" and the user will not get this every time the page is updated.
 ```javascript
   if (document.querySelector("#checkbox").checked) {
     localStorage.setItem("hideModal", "true");
     document.querySelector("#modal").style.display = "none";
 ```
 
-A function called "addItem" is then created, here the input fields are checked to ensure that the user has entered valid values. If both inputs are valid it will create a object that is pushed into the array.
+A function called "addItem" is then created, here the input fields are checked to ensure that the user has entered valid values. If both inputs are valid it will create a object that is pushed into the array, the uppdateList function is called to update the list after the object is pushed into the array.
 
 Furthermore, a function called "updateList" is created, this uses a forEach which means that every time something is added to the array, it will print the values in the table, store the price in a sum, and print the sum in the HTML document.
 

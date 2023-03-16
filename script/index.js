@@ -1,10 +1,3 @@
-// TODO: Kan legge til en vare uten og legge til pris, og det blir lagt til i tabellen.
-// vil da få en vare som har verdi NaN. og summen vil ikke bli regnet ut.
-// Legge til noe som hindrer dette.
-
-// TODO: Legge til en knapp som fjerner alle varene?
-
-// Nr.1
 window.onload = () => {
   if (localStorage.getItem("hideModal") !== "true") {
     document.querySelector("#modal").style.display = "block";
@@ -13,9 +6,7 @@ window.onload = () => {
 if (localStorage.getItem("hideModal") === "true") {
   document.querySelector("#modal").style.display = "none";
 }
-///*  */
 
-// Nr.2
 const closeModalBtn = document.querySelector("#closeModalBtn");
 
 closeModalBtn.addEventListener("click", () => {
@@ -27,19 +18,14 @@ closeModalBtn.addEventListener("click", () => {
     document.querySelector("#modal").style.display = "none";
   }
 });
-///*  */
-// Nr.3
+
 const openModalBtn = document.querySelector("#instructionBtn");
 openModalBtn.addEventListener("click", () => {
   document.querySelector("#modal").style.display = "block";
 });
-///*  */
 
-// Nr.4
 let items = [];
-// /*  */
 
-// Nr.5
 const addBtn = document.querySelector("#addItemBtn");
 
 document.addEventListener("keypress", (e) => {
@@ -51,18 +37,16 @@ document.addEventListener("keypress", (e) => {
 addBtn.addEventListener("click", () => {
   addItem();
 });
-// /*  */
 
-// Nr.6
 addItem = () => {
   let itemType = document.querySelector("#itemType").value;
   let itemPrice = parseFloat(document.querySelector("#itemPrice").value);
   if (itemType == "") {
-    alert("Du må legge til en vare og en pris.");
-  } else if (itemPrice <= 0) {
-    document.querySelector("#itemPrice").value = "";
-    alert("Prisen på varen må være over 0.");
-  } else {
+    alert("Du må legge til en vare og en pris."); 
+}else if (itemPrice <= 0 || isNaN(itemPrice)) {
+  document.querySelector("#itemPrice").value = "";
+  alert("Prisen på varen må være over 0.");
+} else {
     let item = {
       type: itemType,
       price: itemPrice,
@@ -80,7 +64,7 @@ const confirmRemoveBtn = document.querySelector("#confirmRemove");
 const cancelRemoveBtn = document.querySelector("#cancelRemove");
 let itemList = document.querySelector("#itemList");
 
-// Nr.7
+
 const updateList = () => {
   itemList.innerHTML = "";
   let sum = 0;
@@ -90,16 +74,14 @@ const updateList = () => {
     outputTable.id = `item${index}`;
     outputTable.innerHTML = `
       <td>${item.type}</td>
-      <td>${item.price}</td>
+      <td>${item.price},-</td>
       <td><button id="removeBtn${index}" class="removeBtn">X</button></td>
     `;
     itemList.appendChild(outputTable);
   });
   sumOutput.textContent = `Total sum: ${sum}`;
 };
-///*  */
 
-// Nr.8
 itemList.addEventListener("click", (e) => {
   if (e.target.classList.contains("removeBtn")) {
     const index = e.target.id.substring(9);
@@ -114,12 +96,18 @@ itemList.addEventListener("click", (e) => {
     confirmRemoveBtn.addEventListener("click", confirmRemove);
   }
 });
-// /*  */
 
-// Nr.9
 cancelRemoveBtn.addEventListener("click", () => {
   document.querySelector(".confirmationModal").style.display = "none";
   setTimeout(() => {
     alert("Ingen varer er fjernet fra tabellen!");
   }, 10);
 });
+
+const clearTableBtn = document.querySelector("#clearTableBtn");
+clearTableBtn.addEventListener("click", () => {
+  items.splice(0, items.length);
+  updateList();
+}
+);
+

@@ -91,6 +91,26 @@
   border: none;
   cursor: pointer;
 }
+.clearTable{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.clearTable button{
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 10px;
+  margin: 0 10px;
+}
+.clearTable button:hover{
+  background-color: #ff0000;
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.4);
+}
 
 .instructionBtn{
   background-color: transparent;
