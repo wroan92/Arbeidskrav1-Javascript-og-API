@@ -14,7 +14,7 @@ The project consisted of creating a website where the user could enter an item a
 ### Installing
 1. Clone the repo:
 ``` 
-git clone https://jkdlsaøkasjdølkjasølkdjaødsjksaødkajsd 
+git clone https://github.com/wroan92/Arbeidskrav1-Javascript-og-API.git
 ```
 ### Running
 Navigate to your index.html and right-click the file, then press Open with Live Server. This will run the live-server and you will be able to navigate through the assignment.
