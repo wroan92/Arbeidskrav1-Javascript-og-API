@@ -104,10 +104,11 @@ cancelRemoveBtn.addEventListener("click", () => {
   }, 10);
 });
 
+
+let popup = document.querySelector("#popup");
+let jaKnapp = document.querySelector("#ja");
+let neiKnapp = document.querySelector("#nei");
 const clearTableBtn = document.querySelector("#clearTableBtn");
-clearTableBtn.addEventListener("click", () => {
-  items.splice(0, items.length);
-  updateList();
-}
-);
+
+
 
