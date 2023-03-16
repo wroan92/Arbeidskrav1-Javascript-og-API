@@ -42,11 +42,11 @@ addItem = () => {
   let itemType = document.querySelector("#itemType").value;
   let itemPrice = parseFloat(document.querySelector("#itemPrice").value);
   if (itemType == "") {
-    alert("Du må legge til en vare og en pris.");
-  } else if (itemPrice <= 0 || isNaN(itemPrice)) {
-    document.querySelector("#itemPrice").value = "";
-    alert("Prisen på varen må være over 0.");
-  } else {
+    alert("Du må legge til en vare og en pris."); 
+}else if (itemPrice <= 0 || isNaN(itemPrice)) {
+  document.querySelector("#itemPrice").value = "";
+  alert("Prisen på varen må være over 0.");
+} else {
     let item = {
       type: itemType,
       price: itemPrice,
@@ -63,6 +63,7 @@ const removeBtn = document.querySelector("#removeBtn");
 const confirmRemoveBtn = document.querySelector("#confirmRemove");
 const cancelRemoveBtn = document.querySelector("#cancelRemove");
 let itemList = document.querySelector("#itemList");
+
 
 const updateList = () => {
   itemList.innerHTML = "";
@@ -102,3 +103,19 @@ cancelRemoveBtn.addEventListener("click", () => {
     alert("Ingen varer er fjernet fra tabellen!");
   }, 10);
 });
+
+
+let popup = document.querySelector("#popup");
+let yesBtn = document.querySelector("#yesBtn");
+let noBtn = document.querySelector("#noBtn");
+const clearTableBtn = document.querySelector("#clearTableBtn");
+
+
+clearTableBtn.addEventListener("click", () => {
+  popup.style.display = "block";
+
+});
+
+
+
+
