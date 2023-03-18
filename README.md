@@ -9,7 +9,6 @@ The project consisted of creating a website where the user could enter an item a
 - The user must be able to confirm the choice of and delete an item.
 - The price of the goods must be added up and updated every time an item is added or removed.
 
-### 
 ## Getting Started
 ### Installing
 1. Clone the repo:
@@ -34,15 +33,17 @@ In the first part of the code, a modal is opened, if the user has checked the ch
   if (document.querySelector("#checkbox").checked) {
     localStorage.setItem("hideModal", "true");
     document.querySelector("#modal").style.display = "none";
+  }
 ```
 
 A function called "addItem" is then created, here the input fields are checked to ensure that the user has entered valid values. If both inputs are valid it will create a object that is pushed into the array, the uppdateList function is called to update the list after the object is pushed into the array.
 
 Furthermore, a function called "updateList" is created, this uses a forEach which means that every time something is added to the array, it will print the values in the table, store the price in a sum, and print the sum in the HTML document.
 
-The last part deals with the removal of an item from the table. Here it looks for the class "removeBtn", if it finds it it will retrieve the index using substring(9) which says it wants the value that comes after the first 9 characters. When the id is then (removeBtn2), we extract the index value, which is then "2".
-```Javascript  
-if (e.target.classList.contains("removeBtn")) {
-    const index = e.target.id.substring(9);
-```
+The last part deals with the removal of an item from the table. Here it looks for the class "removeBtn", and add the id to "const index"
 The modal where the user must confirm the delete will then come up, if the user clicks that he wants to delete this item, the item will be deleted using splice, if the user does not want to delete, it will return to the page.
+
+And of course, in the last bit of code I ran into one problem that I figured out after a lot of fiddling. The problem was that if I had a list with 4 items and I clicked to remove #2 but then clicked cancel it was kind of marked. So when I then clicked on number 4 and selected and deleted it, it deleted number 2 and number 4. This was because addEventListener adds an event listener to the button, but does not remove it, so then I found out that I could use removeEventListener, but felt it became easier and shorter to use onClick.
+Felt the need to explain this as addEventListener is used elsewhere in the code and onClick is used here.
+
+I have left the original solution to the code commented out in the js file.
